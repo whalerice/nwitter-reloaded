@@ -1,15 +1,19 @@
-import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+import styled from "styled-components";
+import PostTweetForm from "../components/post-tweet-form";
+import Timeline from "../components/timeline";
+
+const Warapper = styled.div`
+  display: grid;
+  gap: 50px;
+  overflow-y: scroll;
+  grid-template-rows: 1fr 5fr;
+`;
 
 export default function Home() {
-  const navigate = useNavigate();
-  const onLogOut = () => {
-    auth.signOut();
-    navigate("/login");
-  };
   return (
-    <div>
-      <button onClick={onLogOut}>LogOut</button>
-    </div>
+    <Warapper>
+      <PostTweetForm />
+      <Timeline />
+    </Warapper>
   );
 }
